@@ -10,7 +10,7 @@ export const postCustomers = async (req, res) =>{
         })
         res.send("OK").status(201)
     }catch(error){
-        console.log("Erro no postGames!");
+        console.log("Erro no postCustomers!");
         res.status(500).send(error.message);
     }
 }
