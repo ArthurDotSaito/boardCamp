@@ -2,7 +2,6 @@ import db from "../database/databaseConnection.js";
 
 export const postGames = async (req, res) =>{
     const {name, image, stockTotal, pricePerDay} = req.body;
-    console.log("tentei criar um game! post1");
 
     try{
         await db.query({

@@ -8,16 +8,17 @@ export const getRentals = async(req, res) =>{
         const game = await db.query('SELECT id, name FROM games'); 
 
         const rentalObject = rentals.rows.map((rental, i) =>({
-            rental,
+            ...rental,
             customer: {
-                id:rentals[i].customerId,
-                name: customer.find((e) => e.id === rentals[i].customerId).name
+                id:rentals.rows[i].customerId,
+                name: customer.rows.find((e) => e.id === rentals.rows[i].customerId).name
             },
             game: {
-                id: rentals[i].gameId,
-                name: game.find((e) => e.id === rentals[i].gameId).name
+                id: rentals.rows[i].gameId,
+                name: game.rows.find((e) => e.id === rentals.rows[i].gameId).name
             }
         }))
+        console.log("Oi")
 
         res.status(200).send(rentalObject)
     }catch(error){
