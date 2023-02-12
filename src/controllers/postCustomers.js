@@ -8,7 +8,7 @@ export const postCustomers = async (req, res) =>{
             text:'INSERT INTO customers (name, phone, cpf, birthday) VALUES ($1, $2, $3, $4)',
             values: [name, phone, cpf, birthday],
         })
-        res.send("OK").status(201)
+        res.sendStatus(201)
     }catch(error){
         console.log("Erro no postCustomers!");
         res.status(500).send(error.message);

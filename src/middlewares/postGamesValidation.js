@@ -7,8 +7,9 @@ export const postGamesValidation = async(req,res, next) =>{
     try{
         const newGameValidation = gameSchema.validate(newGame, {abortEarly: false});
         if(newGameValidation.error) return res.status(400).send(newGameValidation.error.details);
-    
-        await db.query('SELECT * FROM games WHERE name = $1', [newGame?.name]);
+        
+        const game = await db.query('SELECT * FROM games WHERE name = $1', [newGame?.name]);
+        if(game.rowCount > 0) return res.sendStatus(409);
 
         next();
     }catch(error){
