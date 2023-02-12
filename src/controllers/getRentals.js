@@ -18,7 +18,6 @@ export const getRentals = async(req, res) =>{
                 name: game.rows.find((e) => e.id === rentals.rows[i].gameId).name
             }
         }))
-        console.log("Oi")
 
         res.status(200).send(rentalObject)
     }catch(error){

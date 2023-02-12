@@ -14,7 +14,7 @@ export const postRental = async (req, res) =>{
             VALUES ($1, $2, $3, $4, $5, $6, $7)`,
             values: [customerId, gameId, rentDate, daysRented, null, originalPrice, null],
         })
-        res.send("OK").status(201)
+        res.sendStatus(201)
     }catch(error){
         console.log("Erro no postGames!");
         res.status(500).send(error.message);
