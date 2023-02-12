@@ -1,7 +1,7 @@
 import db from "../database/databaseConnection.js";
 
 export const getCustomers = async(req, res) =>{
-    console.log("tentei abrir conexão Customer");
+
     try{
         await db.query("SELECT  * from customers ", (error, result) =>{
         if (error) return res.status(500).send({error: error})
